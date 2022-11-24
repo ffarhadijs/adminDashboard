@@ -1,0 +1,40 @@
+import { Box, Button, useTheme } from "@mui/material";
+import React from "react";
+import { useContext } from "react";
+import { ColorModeContext, tokens } from "../../theme";
+import SideBar from "./sideBar";
+import TopBar from "./topBar";
+
+const Layout = ({ children }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const colorMode = useContext(ColorModeContext);
+
+  return (
+    <Box sx={{ width: "100vw", display: "flex", flexDirection: "row" }}>
+      <Box
+        sx={{
+          width: "200px",
+          height: "100vh",
+        }}
+      >
+        <SideBar />
+      </Box>
+      <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
+        <Box
+          sx={{
+            width: "100%",
+            height: "45px",
+          }}
+        >
+          <TopBar />
+        </Box>
+        <Box sx={{ width: "100%", height: "100%" }}>
+          {children}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default Layout;
