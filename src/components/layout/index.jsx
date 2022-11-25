@@ -1,9 +1,9 @@
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import React from "react";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
-import SideBar from "./sideBar";
-import TopBar from "./topBar";
+import SideBar from "../sideBar";
+import TopBar from "../topBar";
 
 const Layout = ({ children }) => {
   const theme = useTheme();
@@ -14,6 +14,7 @@ const Layout = ({ children }) => {
     <Box sx={{ width: "100vw", display: "flex", flexDirection: "row" }}>
       <Box
         sx={{
+          backgroundColor: colors.primary[600],
           width: "200px",
           height: "100vh",
         }}
@@ -29,9 +30,7 @@ const Layout = ({ children }) => {
         >
           <TopBar />
         </Box>
-        <Box sx={{ width: "100%", height: "100%" }}>
-          {children}
-        </Box>
+        <Box sx={{ width: "100%", height: "100%" }}>{children}</Box>
       </Box>
     </Box>
   );
