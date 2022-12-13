@@ -11,21 +11,37 @@ const Layout = ({ children }) => {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box sx={{ width: "100vw", display: "flex", flexDirection: "row" }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "row",
+      }}
+    >
       <Box
         sx={{
           backgroundColor: colors.primary[600],
           width: "200px",
-          height: "100vh",
+          height: "100%",
+          minHeight:"100vh"
         }}
       >
         <SideBar />
       </Box>
-      <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <Box
           sx={{
+            backgroundColor: colors.primary[700],
             width: "100%",
-            height: "45px",
+            height: "60px",
           }}
         >
           <TopBar />
