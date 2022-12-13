@@ -1,21 +1,25 @@
-import {
-  Box,
-  List,
-  useTheme,
-} from "@mui/material";
+import { Box, List, Stack, Typography } from "@mui/material";
 import React from "react";
-import { menuItems } from "../../data/data";
-import { useState } from "react";
 import MenuItems from "./menuItems";
-
+import logo from "../../assets/logo.png";
 const SideBar = () => {
   return (
-    <Box>
-      <List component={"nav"} sx={{ width: "100%", height: "auto" }}>
-        {menuItems.map((item, index) => (
-          <MenuItems item={item} index={index}/>
-        ))}
-      </List>
+    <Box sx={{ height: "100%" }}>
+      <Stack
+        direction={"row"}
+        alignItems="center"
+        justifyContent={"space-between"}
+        sx={{
+          height: "60px",
+          width: "100%",
+          padding: "0 16px",
+          borderBottom: "0.75px solid grey",
+        }}
+      >
+        <img src={logo} style={{ width: "30px" }} />
+        <Typography variant="body"> Admin Panel</Typography>
+      </Stack>
+      <MenuItems />
     </Box>
   );
 };
