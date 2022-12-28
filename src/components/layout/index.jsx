@@ -22,9 +22,9 @@ const Layout = ({ children }) => {
       <Box
         sx={{
           backgroundColor: colors.primary[600],
-          width: "200px",
           height: "100%",
-          minHeight:"100vh"
+          minHeight:"100vh",
+          display:{xs:"none",sm:"none",md:"block"}
         }}
       >
         <SideBar />
