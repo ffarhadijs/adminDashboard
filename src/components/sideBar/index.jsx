@@ -1,10 +1,10 @@
-import { Box, List, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import MenuItems from "./menuItems";
 import logo from "../../assets/logo.png";
-const SideBar = () => {
+const SideBar = ({ setOpenDrawer }) => {
   return (
-    <Box sx={{ height: "100%" }}>
+    <Box sx={{ height: "100%" }} width={"250px"}>
       <Stack
         direction={"row"}
         alignItems="center"
@@ -17,9 +17,11 @@ const SideBar = () => {
         }}
       >
         <img src={logo} style={{ width: "30px" }} />
-        <Typography variant="body"> Admin Panel</Typography>
+        <Typography variant="h6"> Admin Panel</Typography>
       </Stack>
-      <MenuItems />
+      <MenuItems
+        setOpenDrawer={setOpenDrawer}
+      />
     </Box>
   );
 };
