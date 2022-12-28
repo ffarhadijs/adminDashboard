@@ -14,13 +14,13 @@ import {
 import { tokens } from "../../../theme";
 import { menuItems } from "../../../data/data.js";
 
-const MenuItems = () => {
+const MenuItems = ({ setOpenDrawer }) => {
   const location = useLocation();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [open, setOpen] = useState({});
+  const [openCollapse, setOpenCollapse] = useState({});
   const clickHandler = (index) => () => {
-    setOpen((state) => ({
+    setOpenCollapse((state) => ({
       [index]: !state[index],
     }));
   };
@@ -30,7 +30,13 @@ const MenuItems = () => {
         <Box key={item.id}>
           {item.slug && (
             <Link to={item.slug}>
-              <ListItemButton>
+              <ListItemButton
+                sx={{
+                  backgroundColor:
+                    location.pathname == item.slug && colors.primary[300],
+                }}
+                onClick={()=>setOpenDrawer(false)}
+              >
                 <ListItemIcon>
                   <item.icon />
                 </ListItemIcon>
@@ -41,36 +47,38 @@ const MenuItems = () => {
           {item.subItems && (
             <ListItemButton
               onClick={clickHandler(index)}
-              sx={{ backgroundColor: open[index] && colors.primary[400] }}
+              sx={{
+                backgroundColor: openCollapse[index] && colors.primary[400],
+              }}
             >
               <ListItemIcon>
                 <item.icon />
               </ListItemIcon>
               <ListItemText primary={item.title} />
-              {open[index] === true ? <ExpandLess /> : <ExpandMore />}
+              {openCollapse[index] || location.pathname.includes(item.title) ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
           )}
-          {item.subItems?.map((subItem) => (
-            <Collapse
-              key={subItem.id}
-              in={open[index]}
-              timeout="auto"
-              unmountOnExit
-              sx={{ backgroundColor: colors.blueAccent[900] }}
-            >
-              <Link to={subItem.slug} key={subItem.id}>
+          <Collapse
+            in={openCollapse[index] || location.pathname.includes(item.title)}
+            timeout="auto"
+            unmountOnExit
+            sx={{ backgroundColor: colors.blueAccent[900] }}
+          >
+            {item.subItems?.map((subItem) => (
+              <Link to={subItem.slug} key={subItem.id} >
                 <ListItemButton
                   sx={{
                     backgroundColor:
                       location.pathname == subItem.slug && colors.primary[300],
                     padding: "8px 0 8px 75px",
                   }}
+                  onClick={()=>setOpenDrawer(false)}
                 >
                   <ListItemText secondary={subItem.title} />
                 </ListItemButton>
               </Link>
-            </Collapse>
-          ))}
+            ))}
+          </Collapse>
         </Box>
       ))}
     </List>
