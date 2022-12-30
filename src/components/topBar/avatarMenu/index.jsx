@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { tokens } from "../../../theme";
 import { avatarMenuItems } from "../../../data/data";
+import { Link } from "react-router-dom";
 
 const AvatarMenu = ({ open, openMenu, setOpenMenu }) => {
   const theme = useTheme();
@@ -59,7 +60,7 @@ const AvatarMenu = ({ open, openMenu, setOpenMenu }) => {
       <MenuList>
         {avatarMenuItems.map((item) => (
           <Box key={item.id}>
-            <MenuItem>
+            <MenuItem component={Link} to={item.to}>
               <ListItemIcon>
                 <item.icon />
               </ListItemIcon>

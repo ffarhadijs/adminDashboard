@@ -78,7 +78,7 @@ const TopBar = () => {
               },
             }}
           >
-            <SideBar setOpenDrawer={setOpenDrawer} />
+            <SideBar setOpenDrawer={setOpenDrawer} openDrawer={openDrawer} />
           </Drawer>
         </Box>
         <Box display={"flex"} flexDirection="row" alignItems="center">
@@ -100,6 +100,7 @@ const TopBar = () => {
           </IconButton>
           <IconButton onClick={(e) => setOpenMenu(e.currentTarget)}>
             <Badge
+              overlap="circular"
               color={"success"}
               variant="dot"
               anchorOrigin={{
