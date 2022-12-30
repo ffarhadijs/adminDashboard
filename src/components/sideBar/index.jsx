@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import MenuItems from "./menuItems";
 import logo from "../../assets/logo.png";
-const SideBar = ({ setOpenDrawer }) => {
+const SideBar = ({ setOpenDrawer,openDrawer }) => {
   return (
     <Box sx={{ height: "100%" }} width={"250px"}>
       <Stack
@@ -20,7 +20,7 @@ const SideBar = ({ setOpenDrawer }) => {
         <Typography variant="h6"> Admin Panel</Typography>
       </Stack>
       <MenuItems
-        setOpenDrawer={setOpenDrawer}
+        setOpenDrawer={setOpenDrawer} openDrawer={openDrawer}
       />
     </Box>
   );
