@@ -14,7 +14,7 @@ import {
 import { tokens } from "../../../theme";
 import { menuItems } from "../../../data/data.js";
 
-const MenuItems = ({ setOpenDrawer }) => {
+const MenuItems = ({ setOpenDrawer, openDrawer }) => {
   const location = useLocation();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -23,6 +23,11 @@ const MenuItems = ({ setOpenDrawer }) => {
     setOpenCollapse((state) => ({
       [index]: !state[index],
     }));
+  };
+  const closeDrawerHandler = () => {
+    if (openDrawer === true) {
+      setOpenDrawer(false);
+    }
   };
   return (
     <List component={"nav"} sx={{ width: "100%", height: "auto" }}>
@@ -35,7 +40,7 @@ const MenuItems = ({ setOpenDrawer }) => {
                   backgroundColor:
                     location.pathname == item.slug && colors.primary[300],
                 }}
-                onClick={()=>setOpenDrawer(false)}
+                onClick={closeDrawerHandler}
               >
                 <ListItemIcon>
                   <item.icon />
@@ -48,31 +53,34 @@ const MenuItems = ({ setOpenDrawer }) => {
             <ListItemButton
               onClick={clickHandler(index)}
               sx={{
-                backgroundColor: openCollapse[index] && colors.primary[400],
+                backgroundColor:
+                  (openCollapse[index] && colors.primary[400]) ||
+                  (location.pathname.includes(item.title.toLocaleLowerCase()) &&
+                    colors.primary[400]),
               }}
             >
               <ListItemIcon>
                 <item.icon />
               </ListItemIcon>
               <ListItemText primary={item.title} />
-              {openCollapse[index] || location.pathname.includes(item.title) ? <ExpandLess /> : <ExpandMore />}
+              {openCollapse[index] ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
           )}
           <Collapse
-            in={openCollapse[index] || location.pathname.includes(item.title)}
+            in={openCollapse[index]}
             timeout="auto"
             unmountOnExit
             sx={{ backgroundColor: colors.blueAccent[900] }}
           >
             {item.subItems?.map((subItem) => (
-              <Link to={subItem.slug} key={subItem.id} >
+              <Link to={subItem.slug} key={subItem.id}>
                 <ListItemButton
                   sx={{
                     backgroundColor:
                       location.pathname == subItem.slug && colors.primary[300],
                     padding: "8px 0 8px 75px",
                   }}
-                  onClick={()=>setOpenDrawer(false)}
+                  onClick={closeDrawerHandler}
                 >
                   <ListItemText secondary={subItem.title} />
                 </ListItemButton>
