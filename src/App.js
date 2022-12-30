@@ -3,19 +3,27 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout";
 import "./App.css";
 import { ColorModeContext, useMode } from "./theme";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import Profile from "./pages/Profile";
+import Home from "./pages/Home";
+
 function App() {
   const [theme, colorMode] = useMode();
 
   return (
-    <div className="app">
+    <Box className="app">
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout>app</Layout>
+          <Layout>
+            <Routes>
+              <Route path="/pages/profile" element={<Profile />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Layout>
         </ThemeProvider>
       </ColorModeContext.Provider>
-    </div>
+    </Box>
   );
 }
 
