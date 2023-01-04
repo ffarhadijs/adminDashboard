@@ -26,6 +26,8 @@ const TopBar = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const open = Boolean(openMenu);
+  const localValues = JSON.parse(localStorage.getItem("profileData"));
+
   const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
       color: colors.primary[100],
@@ -108,7 +110,7 @@ const TopBar = () => {
                 horizontal: "right",
               }}
             >
-              <Avatar alt="user profile" src={avatar} />
+              <Avatar alt="user profile" src={localValues?.avatar ? localValues.avatar : avatar} />
             </Badge>
           </IconButton>
         </Box>
