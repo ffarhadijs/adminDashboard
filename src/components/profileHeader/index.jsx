@@ -1,24 +1,19 @@
 import {
-    FaFacebookF,
-    FaTwitter,
-    FaTelegramPlane,
-    FaLinkedinIn,
-  } from "react-icons/fa";
+  FaFacebookF,
+  FaTwitter,
+  FaTelegramPlane,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import Grid from "@mui/material/Unstable_Grid2";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import avatar from "../../assets/avatar.jpg";
 import { Avatar, Box, Stack, Typography, Badge, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 
-
-
 const ProfileHeader = () => {
-
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
-
-
-    
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const localValues = JSON.parse(localStorage.getItem("profileData"));
   return (
     <Box width={"100%"} height={"240px"} bgcolor={"black"} p={"24px"}>
       <Grid container spacing={2} alignItems={"center"}>
@@ -48,12 +43,15 @@ const ProfileHeader = () => {
                   height: 72,
                   display: { xs: "none", sm: "inline-block" },
                 }}
-                src={avatar}
+                src={localValues?.avatar ? localValues.avatar : avatar}
                 alt={"avatar"}
               />
             </Badge>
             <Stack flexDirection={"column"}>
-              <Typography variant={"h5"}>Farhad Farhadi</Typography>
+              <Typography variant={"h5"}>
+                {" "}
+                {localValues?.firstName} {localValues?.lastName}
+              </Typography>
               <Stack
                 flexDirection={"row"}
                 columnGap={"10px"}
@@ -65,7 +63,7 @@ const ProfileHeader = () => {
                   color={colors.grey[400]}
                   fontWeight={"bold"}
                 >
-                  Frontend developer
+                  {localValues?.job}
                 </Typography>
 
                 <Typography
@@ -75,7 +73,7 @@ const ProfileHeader = () => {
                   fontWeight={"bold"}
                 >
                   <LocationOnIcon fontSize={"small"} />
-                  Iran,Urmia
+                  {localValues?.country}, {localValues?.state}
                 </Typography>
               </Stack>
               <Stack
@@ -146,12 +144,12 @@ const ProfileHeader = () => {
         </Grid>
         <Grid xs={12} sm={4} p={"0 28px"}>
           <Typography variant="h6" color={"white"}>
-            I am feeling good!
+            {localValues?.status}
           </Typography>
         </Grid>
       </Grid>
     </Box>
-  )
-}
+  );
+};
 
-export default ProfileHeader
+export default ProfileHeader;
