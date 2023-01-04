@@ -1,6 +1,9 @@
 import {
+  Avatar,
+  Badge,
   Box,
   Divider,
+  Paper,
   Stack,
   Tab,
   Tabs,
@@ -13,11 +16,13 @@ import TabPanel from "../tabPanel";
 import Friends from "./friends";
 import ProfileData from "./profileData";
 import Grid from "@mui/material/Unstable_Grid2";
+import { users } from "../../data/data";
 
 export default function ProfileBody() {
   const [value, setValue] = useState(0);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -80,7 +85,7 @@ export default function ProfileBody() {
           </Stack>
         </Stack>
       </Grid>
-      <Grid xs={12} sm={8} >
+      <Grid xs={12} sm={8}>
         <TabPanel value={value} index={0}>
           <Friends />
         </TabPanel>
@@ -89,7 +94,66 @@ export default function ProfileBody() {
         </TabPanel>
       </Grid>
       <Grid xs={12} sm={4} p={"24px"}>
-        <Box sx={{ backgroundColor: "white", height: "200px" }}></Box>
+        <Paper
+          elevation={4}
+          sx={{
+            backgroundColor: colors.primary[600],
+            height: "auto",
+            padding: "0px 10px",
+          }}
+        >
+          <Typography variant="body1" padding={"10px 0px"}>
+            Followers
+          </Typography>
+          <Divider />
+          {users.slice(0, 4).map((user) => (
+            <Stack
+              key={user.id}
+              padding={"10px 0"}
+              flexDirection={"row"}
+              alignItems="center"
+              justifyContent={"start"}
+            >
+              <Box width="auto" height="100%" p="0 5px">
+                <Badge
+                  overlap="circular"
+                  color={user.color}
+                  variant="dot"
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                >
+                  <Avatar alt={user.name} src={user.avatar} />
+                </Badge>
+              </Box>
+              <Grid xs={12} p={0}>
+                <Typography
+                  variant={"subtitle1"}
+                  sx={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {user.name}
+                </Typography>
+                <Typography
+                  variant={"subtitle2"}
+                  fontSize={"small"}
+                  color={colors.grey[400]}
+                  sx={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {user.job}
+                </Typography>
+              </Grid>
+            </Stack>
+          ))}
+        </Paper>
       </Grid>
     </Grid>
   );
