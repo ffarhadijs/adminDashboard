@@ -15,7 +15,7 @@ const ProfileHeader = () => {
   const colors = tokens(theme.palette.mode);
   const localValues = JSON.parse(localStorage.getItem("profileData"));
   return (
-    <Box width={"100%"} height={"240px"} bgcolor={"black"} p={"24px"}>
+    <Box width={"100%"} height={"240px"} sx={{background:"linear-gradient(to top, #09203f 0%, #3e607a 100%);"}} p={"24px"}>
       <Grid container spacing={2} alignItems={"center"}>
         <Grid xs={12} sm={8}>
           <Stack
@@ -60,7 +60,7 @@ const ProfileHeader = () => {
                 <Typography
                   component="span"
                   variant="subtitle2"
-                  color={colors.grey[400]}
+                  color={colors.grey[300]}
                   fontWeight={"bold"}
                 >
                   {localValues?.job}
@@ -69,7 +69,7 @@ const ProfileHeader = () => {
                 <Typography
                   component={"span"}
                   variant="subtitle2"
-                  color={colors.grey[400]}
+                  color={colors.grey[300]}
                   fontWeight={"bold"}
                 >
                   <LocationOnIcon fontSize={"small"} />
