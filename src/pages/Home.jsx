@@ -1,3 +1,10 @@
+import { Box } from "@mui/material";
+import DashboardTiles from "../components/dashboardTiles";
+
 export default function Home() {
-  return <div>home</div>;
+  return (
+    <Box p={4}>
+      <DashboardTiles />
+    </Box>
+  );
 }
