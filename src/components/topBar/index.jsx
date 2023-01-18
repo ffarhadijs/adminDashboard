@@ -11,14 +11,19 @@ import {
   useTheme,
   Badge,
   Drawer,
+  FormControlLabel,
+  Switch,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import avatar from "../../assets/avatar.jpg";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
 import SideBar from "../sideBar";
 import AvatarMenu from "./avatarMenu";
+import { useContext } from "react";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 const TopBar = () => {
   const theme = useTheme();
@@ -27,6 +32,7 @@ const TopBar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const open = Boolean(openMenu);
   const localValues = JSON.parse(localStorage.getItem("profileData"));
+  const colorMode = useContext(ColorModeContext);
 
   const CssTextField = styled(TextField)({
     "& label.Mui-focused": {
@@ -84,6 +90,17 @@ const TopBar = () => {
           </Drawer>
         </Box>
         <Box display={"flex"} flexDirection="row" alignItems="center">
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleColorMode}
+            color="inherit"
+          >
+            {theme.palette.mode === "dark" ? (
+              <Brightness7Icon />
+            ) : (
+              <Brightness4Icon />
+            )}
+          </IconButton>
           <CssTextField
             size="small"
             sx={{ m: 1 }}
@@ -110,7 +127,10 @@ const TopBar = () => {
                 horizontal: "right",
               }}
             >
-              <Avatar alt="user profile" src={localValues?.avatar ? localValues.avatar : avatar} />
+              <Avatar
+                alt="user profile"
+                src={localValues?.avatar ? localValues.avatar : avatar}
+              />
             </Badge>
           </IconButton>
         </Box>
