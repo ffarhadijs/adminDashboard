@@ -8,7 +8,7 @@ export default function ProfileData() {
   const localValues = JSON.parse(localStorage.getItem("profileData"));
 
   return (
-    <Grid container rowGap={4}>
+    <Grid container rowGap={2}>
       <Grid xs={6}>
         <Typography
           variant="subtitle2"
@@ -59,8 +59,8 @@ export default function ProfileData() {
         >
           Location
         </Typography>
-        <Typography variant="subtitle2">{localValues?.country}</Typography>{" "}
-        <Typography variant="subtitle2">{localValues?.state}</Typography>
+        <Typography variant="subtitle2" component={"span"}>{localValues?.country}</Typography>, {" "}
+        <Typography variant="subtitle2" component={"span"}>{localValues?.state}</Typography>
       </Grid>
       <Grid xs={12}>
         <Typography
