@@ -155,3 +155,15 @@ export const usersData = [
   { id: 6, year: 2022, users: 365 },
   { id: 7, year: 2023, users: 600 },
 ];
+
+export const inboxSideBar=[
+  {id:1, title:"Inbox", slug:"apps/inbox/inbox"},
+  {id:2, title:"Sent", slug:"apps/inbox/sent"},
+  {id:3, title:"Trash", slug:"apps/inbox/trash"}
+]
+
+export const inboxLabels=[
+  {id:1, title:"Angular", slug:"apps/inbox/angular"},
+  {id:2, title:"React", slug:"apps/inbox/react"},
+  {id:3, title:"Vue", slug:"apps/inbox/vue"}
+]
