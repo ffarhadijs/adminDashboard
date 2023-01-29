@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout";
 import "./App.css";
 import { ColorModeContext, useMode } from "./theme";
@@ -11,18 +11,18 @@ import Inbox from "./pages/Inbox";
 import InboxEmails from "./pages/InboxEmails";
 import SentEmails from "./pages/SentEmails";
 import TrashEmails from "./pages/TrashEmails";
-import InboxLayout from "./components/inboxLayout";
-import InboxReact from "./components/inboxReact";
-import InboxAngular from "./components/inboxAngular";
 import ReactEmail from "./pages/ReactEmail";
 import AngularEmail from "./pages/AngularEmail";
 import VueEmail from "./pages/VueEmail";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
+  const queryClient=new QueryClient()
   const [theme, colorMode] = useMode();
 
   return (
     <Box className="app">
+      <QueryClientProvider client={queryClient}>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -42,6 +42,7 @@ function App() {
           </Layout>
         </ThemeProvider>
       </ColorModeContext.Provider>
+      </QueryClientProvider>
     </Box>
   );
 }
