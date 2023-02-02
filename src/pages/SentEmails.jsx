@@ -1,11 +1,10 @@
-import { Box } from "@mui/material";
 import InboxLayout from "../components/inboxLayout";
-import Sent from "../components/sent";
+import InboxSections from "../components/inboxSections";
 
 export default function SentEmails() {
   return (
     <InboxLayout>
-      <Sent />
+      <InboxSections type={"sent"}/>
     </InboxLayout>
   );
 }

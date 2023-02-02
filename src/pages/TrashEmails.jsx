@@ -1,12 +1,10 @@
-import { Box } from "@mui/material";
 import InboxLayout from "../components/inboxLayout";
-import Trash from "../components/trash";
+import InboxSections from "../components/inboxSections";
 
-export default function TrashEmails(){
-
-    return(
-        <InboxLayout>
-        <Trash/>
+export default function TrashEmails() {
+  return (
+    <InboxLayout>
+      <InboxSections type="trash" />
     </InboxLayout>
-    )
+  );
 }

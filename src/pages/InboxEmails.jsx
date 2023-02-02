@@ -1,12 +1,10 @@
-import { Box } from "@mui/material";
-import Inbox from "../components/inbox";
 import InboxLayout from "../components/inboxLayout";
+import InboxSections from "../components/inboxSections";
 
-export default function InboxEmails(){
-
-return(
-<InboxLayout>
-    <Inbox/>
-</InboxLayout>
-)
+export default function InboxEmails() {
+  return (
+    <InboxLayout>
+      <InboxSections type={"recieved"}/>
+    </InboxLayout>
+  );
 }

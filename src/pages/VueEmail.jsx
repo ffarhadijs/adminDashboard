@@ -1,11 +1,10 @@
-import { Box } from "@mui/material";
 import InboxLayout from "../components/inboxLayout";
-import InboxVue from "../components/inboxVue";
+import InboxSections from "../components/inboxSections";
 
 export default function VueEmail() {
   return (
     <InboxLayout>
-    <InboxVue/>
-</InboxLayout>
+      <InboxSections label={"Vue"} />
+    </InboxLayout>
   );
 }

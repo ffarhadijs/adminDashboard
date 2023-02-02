@@ -1,12 +1,11 @@
-import { Box } from "@mui/material";
 import InboxLayout from "../components/inboxLayout";
-import InboxReact from "../components/inboxReact";
+import InboxSections from "../components/inboxSections";
 
 export default function ReactEmail(){
 
 return(
     <InboxLayout>
-        <InboxReact/>
+      <InboxSections label={"React"}/>
     </InboxLayout>
 )
 }
