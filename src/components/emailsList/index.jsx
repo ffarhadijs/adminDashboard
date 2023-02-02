@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { tokens } from "../../theme";
+import { Link } from "react-router-dom";
 
 export default function EmailsList({ emailsList }) {
   const theme = useTheme();
@@ -16,7 +17,7 @@ export default function EmailsList({ emailsList }) {
   return (
     <Box sx={{ width: "100%" }}>
       {emailsList.map((email, index) => (
-        <Fragment key={email.id}>
+        <Link to={`${email.id}`} key={email.id}>
           <Stack
             flexDirection={"row"}
             justifyContent="start"
@@ -62,7 +63,7 @@ export default function EmailsList({ emailsList }) {
           <Divider
             sx={{ display: index === emailsList.length - 1 ? "none" : "block" }}
           />
-        </Fragment>
+        </Link>
       ))}
     </Box>
   );
