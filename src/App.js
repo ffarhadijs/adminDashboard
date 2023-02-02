@@ -15,6 +15,7 @@ import ReactEmail from "./pages/ReactEmail";
 import AngularEmail from "./pages/AngularEmail";
 import VueEmail from "./pages/VueEmail";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { EmailDetails } from "./pages/EmailDetails";
 
 function App() {
   const queryClient=new QueryClient()
@@ -31,13 +32,14 @@ function App() {
               <Route path="/pages/profile" element={<Profile />} />
               <Route path="/pages/settings" element={<Settings />} />
               <Route path="/" element={<Home />} />
-              <Route path="/apps/inbox" element={<Inbox />} />
-              <Route path="/apps/inbox/inbox" element={<InboxEmails />} />
-              <Route path="/apps/inbox/sent" element={<SentEmails />} />
-              <Route path="/apps/inbox/trash" element={<TrashEmails />} />
-              <Route path="/apps/inbox/react" element={<ReactEmail />} />
-              <Route path="/apps/inbox/angular" element={<AngularEmail />} />
-              <Route path="/apps/inbox/vue" element={<VueEmail />} />
+              <Route path="/apps/emailbox" element={<Inbox />} />
+              <Route path="/apps/emailbox/inbox" element={<InboxEmails />} />
+              <Route path="/apps/emailbox/sent" element={<SentEmails />} />
+              <Route path="/apps/emailbox/trash" element={<TrashEmails />} />
+              <Route path="/apps/emailbox/react" element={<ReactEmail />} />
+              <Route path="/apps/emailbox/angular" element={<AngularEmail />} />
+              <Route path="/apps/emailbox/vue" element={<VueEmail />} />
+              <Route path="/apps/emailbox/:category/:id" element={<EmailDetails />} />
             </Routes>
           </Layout>
         </ThemeProvider>
