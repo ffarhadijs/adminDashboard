@@ -29,7 +29,7 @@ export const menuItems = [
     id: "1",
     icon: Apps,
     subItems: [
-      { title: "Inbox", id: "11", slug: "/apps/inbox" },
+      { title: "Inbox", id: "11", slug: "/apps/emailbox" },
       { title: "Contacts", id: "12", slug: "/apps/contacts" },
       { title: "Calendar", id: "13", slug: "/apps/calendar" },
       { title: "Note", id: "14", slug: "/apps/note" },
@@ -157,13 +157,13 @@ export const usersData = [
 ];
 
 export const inboxSideBar=[
-  {id:1, title:"Inbox", slug:"apps/inbox/inbox"},
-  {id:2, title:"Sent", slug:"apps/inbox/sent"},
-  {id:3, title:"Trash", slug:"apps/inbox/trash"}
+  {id:1, title:"Inbox", slug:"apps/emailbox/inbox"},
+  {id:2, title:"Sent", slug:"apps/emailbox/sent"},
+  {id:3, title:"Trash", slug:"apps/emailbox/trash"}
 ]
 
 export const inboxLabels=[
-  {id:1, title:"Angular", slug:"apps/inbox/angular"},
-  {id:2, title:"React", slug:"apps/inbox/react"},
-  {id:3, title:"Vue", slug:"apps/inbox/vue"}
+  {id:1, title:"Angular", slug:"apps/emailbox/angular"},
+  {id:2, title:"React", slug:"apps/emailbox/react"},
+  {id:3, title:"Vue", slug:"apps/emailbox/vue"}
 ]
