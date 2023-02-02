@@ -4,7 +4,7 @@ import MenuItems from "./menuItems";
 import logo from "../../assets/logo.png";
 const SideBar = ({ setOpenDrawer, openDrawer }) => {
   return (
-    <Box sx={{ height: "100%" }} width={"250px"}>
+    <Box sx={{ height: "100%", width:"250px" }}>
       <Stack
         direction={"row"}
         alignItems="center"
