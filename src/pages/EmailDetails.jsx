@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import EmailContent from "../components/emailContent";
+import InboxLayout from "../components/inboxLayout";
 import { Loading } from "../components/loading";
 import { useFetchEmail } from "../hooks/useFetchEmail";
 
@@ -17,9 +18,9 @@ export const EmailDetails = () => {
   }
   if (status === "success") {
     return (
-      <>
+      <InboxLayout>
         <EmailContent data={data.data} />
-      </>
+      </InboxLayout>
     );
   }
 };
