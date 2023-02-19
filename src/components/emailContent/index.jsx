@@ -5,6 +5,8 @@ import {
   Divider,
   IconButton,
   InputBase,
+  Menu,
+  MenuItem,
   Stack,
   styled,
   Tooltip,
@@ -18,7 +20,6 @@ import { useNavigate } from "react-router-dom";
 import { tokens } from "../../theme";
 import { useState } from "react";
 import DialogModal from "../dialogModal";
-import { useQueryClient } from "react-query";
 import useUpdateEmail from "../../hooks/useUpdateEmail";
 
 const TextArea = styled(InputBase)({
@@ -31,23 +32,37 @@ const TextArea = styled(InputBase)({
 
 export default function EmailContent({ data }) {
   const [reply, setReply] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
   const [dialogType, setDialogType] = useState();
+  const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
+  const openMenu = Boolean(anchorEl);
 
   const sendReplyHandler = () => {
     setDialogType("sendEmail");
-    setOpen(true);
+    setOpenDialog(true);
   };
+
   const trashHandler = () => {
     setDialogType("deleteEmail");
-    setOpen(true);
+    setOpenDialog(true);
   };
+
   const { mutateAsync: updateEmail } = useUpdateEmail();
+
   const deleteHandler = () => {
     updateEmail({ ...data, type: "trash" });
+    navigate(-1);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const moveToHandler = (label) => {
+    updateEmail({ ...data, label: label });
     navigate(-1);
   };
   return (
@@ -76,10 +91,34 @@ export default function EmailContent({ data }) {
             </Tooltip>
           )}
           <Tooltip title="Move to">
-            <IconButton>
+            <IconButton onClick={(event) => setAnchorEl(event.currentTarget)}>
               <BookmarkIcon />
             </IconButton>
           </Tooltip>
+          <Menu anchorEl={anchorEl} open={openMenu} onClose={handleClose}>
+            <MenuItem
+              onClick={() => moveToHandler("Vue")}
+              sx={{ backgroundColor: `${data.label === "Vue" && "GrayText"}` }}
+            >
+              Vue
+            </MenuItem>
+            <MenuItem
+              onClick={() => moveToHandler("React")}
+              sx={{
+                backgroundColor: `${data.label === "React" && "GrayText"}`,
+              }}
+            >
+              React
+            </MenuItem>
+            <MenuItem
+              onClick={() => moveToHandler("Angular")}
+              sx={{
+                backgroundColor: `${data.label === "Angular" && "GrayText"}`,
+              }}
+            >
+              Angular
+            </MenuItem>
+          </Menu>
         </Stack>
         <Typography variant="h5" marginY={2}>
           {data.title}
@@ -117,7 +156,10 @@ export default function EmailContent({ data }) {
         </Typography>
       </Stack>
 
-      <div dangerouslySetInnerHTML={{__html:data.description}} style={{margin: "20px 10px"}}/> 
+      <div
+        dangerouslySetInnerHTML={{ __html: data.description }}
+        style={{ margin: "20px 10px" }}
+      />
 
       {reply ? (
         <Box
@@ -168,14 +210,14 @@ export default function EmailContent({ data }) {
       <DialogModal
         deleteHandler={deleteHandler}
         type={dialogType}
-        open={open}
+        open={openDialog}
         content={`${
           (dialogType === "sendEmail" && `your email sent to ${data.from}`) ||
           (dialogType === "deleteEmail" && "Are you sure to delete this email?")
         }
       `}
         title={"confirmation message"}
-        setOpen={setOpen}
+        setOpen={setOpenDialog}
       />
     </Stack>
   );
