@@ -50,7 +50,6 @@ export default function EmailContent({ data }) {
     updateEmail({ ...data, type: "trash" });
     navigate(-1);
   };
-
   return (
     <Stack
       sx={{ padding: "25px", width: "100%" }}
@@ -69,11 +68,13 @@ export default function EmailContent({ data }) {
               <KeyboardBackspaceIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Delete">
-            <IconButton onClick={trashHandler}>
-              <DeleteForeverIcon />
-            </IconButton>
-          </Tooltip>
+          {data.type === "trash" ? null : (
+            <Tooltip title="Delete">
+              <IconButton onClick={trashHandler}>
+                <DeleteForeverIcon />
+              </IconButton>
+            </Tooltip>
+          )}
           <Tooltip title="Move to">
             <IconButton>
               <BookmarkIcon />
@@ -104,7 +105,7 @@ export default function EmailContent({ data }) {
           sx={{ width: "30px", height: "30px", marginX: "10px" }}
         />
         <Typography variant="subtitle2" component={"span"} fontWeight={400}>
-          from {"  "}
+          {data.type === "sent" ? "to" : "from"}{" "}
           <Typography variant="subtitle2" component={"span"} fontWeight={500}>
             {data.from}{" "}
           </Typography>
@@ -116,9 +117,8 @@ export default function EmailContent({ data }) {
         </Typography>
       </Stack>
 
-      <Typography fontWeight={300} sx={{ margin: "20px 10px" }}>
-        {data.description}
-      </Typography>
+      <div dangerouslySetInnerHTML={{__html:data.description}} style={{margin: "20px 10px"}}/> 
+
       {reply ? (
         <Box
           sx={{
