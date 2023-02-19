@@ -1,16 +1,13 @@
 import {
   Box,
   Grid,
-  InputBase,
   useTheme,
   Typography,
   TextField,
   Button,
   Stack,
-  IconButton,
-  Tooltip,
 } from "@mui/material";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -20,13 +17,12 @@ import { styled } from "@mui/material/styles";
 import { tokens } from "../../theme";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import SaveIcon from "@mui/icons-material/Save";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useNavigate } from "react-router-dom";
 import { getTime } from "../../utils/getTime";
 import { getDate } from "../../utils/getDate";
 import profile from "../../assets/profile.png";
 import useSendEmail from "../../hooks/useSendEmail";
+
 const schema = yup.object().shape({
   email: yup.string().required().email(),
 });
@@ -58,10 +54,10 @@ const Compose = () => {
     resolver: yupResolver(schema),
   });
 
-  const {mutateAsync} = useSendEmail()
+  const { mutateAsync } = useSendEmail();
 
   const onSubmit = (data) => {
-    mutateAsync({...email,from:data.email, title: data.subject})
+    mutateAsync({ ...email, from: data.email, title: data.subject });
   };
 
   const discardHandler = () => {
@@ -94,25 +90,12 @@ const Compose = () => {
 
   return (
     <Box sx={{ width: "100%", padding: "40px" }}>
-      <Stack flexDirection="row" justifyContent={"start"} alignItems="start">
-        <Tooltip title="Save">
-          <IconButton>
-            <SaveIcon />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Discard" onClick={discardHandler}>
-          <IconButton>
-            <DeleteForeverIcon />
-          </IconButton>
-        </Tooltip>
-      </Stack>
       <Stack
         flexDirection="column"
         alignItems={"start"}
         justifyContent="start"
         component="form"
         onSubmit={handleSubmit(onSubmit)}
-        sx={{ paddingTop: "20px" }}
       >
         <Grid container alignItems={"center"}>
           <Grid item sm={2}>
@@ -160,14 +143,24 @@ const Compose = () => {
             />
           </Grid>
         </Grid>
-        <Button
-          variant="contained"
-          type="submit"
-          color="secondary"
-          sx={{ color: "white", marginTop: "60px" }}
-        >
-          Send
-        </Button>
+        <Stack flexDirection={"row"} columnGap={2}>
+          <Button
+            variant="contained"
+            type="submit"
+            color="secondary"
+            sx={{ color: "white", marginTop: "60px" }}
+          >
+            Send
+          </Button>
+          <Button
+            variant="contained"
+            onClick={discardHandler}
+            color="error"
+            sx={{ color: "white", marginTop: "60px" }}
+          >
+            Discard
+          </Button>
+        </Stack>
       </Stack>
     </Box>
   );
