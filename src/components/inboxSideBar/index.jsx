@@ -19,13 +19,24 @@ const InboxSideBar = () => {
         padding: "20px",
       }}
     >
-      <Button>compose</Button>
+      <Link
+        to="/apps/emailbox/compose"
+        style={{
+          border: "1px solid",
+          borderColor: "rgb(64, 64, 64)",
+          padding: "3px 10px",
+          borderRadius: "3px",
+          marginBottom: "10px",
+        }}
+      >
+        compose
+      </Link>
       {inboxSideBar.map((item) => (
         <Link
           key={item.id}
           to={`/${item.slug}`}
           style={{
-            fontSize:"14px",
+            fontSize: "14px",
             display: "block",
             width: "100%",
             backgroundColor: location.pathname.includes(item.slug) && "#4cceac",
@@ -45,7 +56,7 @@ const InboxSideBar = () => {
           key={item.id}
           to={`/${item.slug}`}
           style={{
-            fontSize:"14px",
+            fontSize: "14px",
             display: "block",
             width: "100%",
             backgroundColor: location.pathname.includes(item.slug) && "#4cceac",
