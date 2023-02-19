@@ -16,6 +16,7 @@ import AngularEmail from "./pages/AngularEmail";
 import VueEmail from "./pages/VueEmail";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { EmailDetails } from "./pages/EmailDetails";
+import ComposeEmail from "./pages/ComposeEmail";
 
 function App() {
   const queryClient=new QueryClient()
@@ -40,6 +41,7 @@ function App() {
               <Route path="/apps/emailbox/angular" element={<AngularEmail />} />
               <Route path="/apps/emailbox/vue" element={<VueEmail />} />
               <Route path="/apps/emailbox/:category/:id" element={<EmailDetails />} />
+              <Route path="/apps/emailbox/compose" element={<ComposeEmail />} />
             </Routes>
           </Layout>
         </ThemeProvider>
