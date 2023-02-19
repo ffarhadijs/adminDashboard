@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
 import { useFetchEmails } from "../../hooks/useFetchEmails";
@@ -25,7 +25,6 @@ export default function InboxSections({ type, label }) {
         justifyContent="start"
         sx={{ width: "100%" }}
       >
-        <Box sx={{ margin: "0 0 30px 0" }}>filters</Box>
         <EmailsList emailsList={emailsList} />
       </Stack>
     );
