@@ -10,12 +10,12 @@
       "attachment": true,
       "from": "jessica@gmail.com",
       "profile": "https://pixlr.com/studio/template/6264364c-b8cc-4f4f-92d8-28c69a2b756w/thumbnail.webp",
-      "type": "sent"
+      "type": "trash"
     },
     {
       "id": 2,
       "title": "Lazy loading Angular controllers, directives and services",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.",
+      "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> <p>Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>",
       "label": "Angular",
       "date": "7/22/2018",
       "time": "10:20",
@@ -27,7 +27,7 @@
     {
       "id": 3,
       "title": "What a hot day",
-      "description": "Duis non malesuada est, quis congue nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend",
+      "description": "<p>Duis non malesuada est, quis congue nibh.</p> <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend</p>",
       "label": "React",
       "date": "5/30/2019",
       "time": "13:50",
@@ -46,7 +46,7 @@
       "attachment": false,
       "from": "mail@hotmail.com",
       "profile": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfZDabpYnE3St-xoZZgVSGgRMIn3km-RjzE4YooiGV5R4kklAzNzb8GVZwLGCHzPW4puQ&usqp=CAU",
-      "type": "sent"
+      "type": "recieved"
     },
     {
       "id": 5,
@@ -58,7 +58,7 @@
       "attachment": false,
       "from": "mail@yahoo.com",
       "profile": "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
-      "type": "recieved"
+      "type": "trash"
     },
     {
       "id": 6,
@@ -87,14 +87,14 @@
     {
       "id": 8,
       "title": "Oho!",
-      "description": "Turpis egestas lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "<p>Turpis egestas lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
       "label": "Vue",
       "date": "12/11/2021",
       "time": "12:30",
       "attachment": false,
       "from": "max@gmail.com",
       "profile": "https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png",
-      "type": "recieved"
+      "type": "sent"
     }
   ],
   "countries": [
@@ -651,7 +651,12 @@
     },
     {
       "country": "Brunei",
-      "states": ["Belait", "Brunei and Muara", "Temburong", "Tutong"]
+      "states": [
+        "Belait",
+        "Brunei and Muara",
+        "Temburong",
+        "Tutong"
+      ]
     },
     {
       "country": "Bulgaria",
@@ -1131,7 +1136,13 @@
     },
     {
       "country": "Djibouti",
-      "states": ["Ali Sabih", "Dikhil", "Djibouti", "Obock", "Tadjoura"]
+      "states": [
+        "Ali Sabih",
+        "Dikhil",
+        "Djibouti",
+        "Obock",
+        "Tadjoura"
+      ]
     },
     {
       "country": "Dominica",
@@ -2285,7 +2296,11 @@
     },
     {
       "country": "Luxembourg",
-      "states": ["Diekirch", "Grevenmacher", "Luxembourg"]
+      "states": [
+        "Diekirch",
+        "Grevenmacher",
+        "Luxembourg"
+      ]
     },
     {
       "country": "Macedonia",
@@ -3367,7 +3382,12 @@
     },
     {
       "country": "Serbia and Montenegro",
-      "states": ["Kosovo", "Montenegro", "Serbia", "Vojvodina"]
+      "states": [
+        "Kosovo",
+        "Montenegro",
+        "Serbia",
+        "Vojvodina"
+      ]
     },
     {
       "country": "Seychelles",
@@ -3753,7 +3773,12 @@
     },
     {
       "country": "Swaziland",
-      "states": ["Hhohho", "Lubombo", "Manzini", "Shiselweni"]
+      "states": [
+        "Hhohho",
+        "Lubombo",
+        "Manzini",
+        "Shiselweni"
+      ]
     },
     {
       "country": "Sweden",
@@ -3979,7 +4004,13 @@
     },
     {
       "country": "Togo",
-      "states": ["Kara", "Plateaux", "Savanes", "Centrale", "Maritime"]
+      "states": [
+        "Kara",
+        "Plateaux",
+        "Savanes",
+        "Centrale",
+        "Maritime"
+      ]
     },
     {
       "country": "Tonga",
@@ -4340,7 +4371,14 @@
     },
     {
       "country": "Vanuatu",
-      "states": ["Malampa", "Penama", "Sanma", "Shefa", "Tafea", "Torba"]
+      "states": [
+        "Malampa",
+        "Penama",
+        "Sanma",
+        "Shefa",
+        "Tafea",
+        "Torba"
+      ]
     },
     {
       "country": "Venezuela",
