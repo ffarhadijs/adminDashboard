@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import {
   Avatar,
   Box,
@@ -30,7 +29,7 @@ export default function EmailsList({ emailsList }) {
             }}
           >
             <Avatar src={email.profile} alt={email.title} />
-            <Box sx={{ width: "600px", maxWidth: "600px" }}>
+            <Box sx={{ width: "100%", maxWidth: "600px" }}>
               <Typography variant="subtitle1">{email.title}</Typography>
               <Typography
                 variant="subtitle2"
@@ -42,7 +41,13 @@ export default function EmailsList({ emailsList }) {
                   textOverflow: "ellipsis",
                 }}
               >
-                {email.description}
+                {email.type === "sent" ? 
+                  <div
+                    dangerouslySetInnerHTML={{ __html: email.description }}
+                  />
+                  :
+                email.description
+                }
               </Typography>
             </Box>
             <Typography
