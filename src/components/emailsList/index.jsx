@@ -41,13 +41,13 @@ export default function EmailsList({ emailsList }) {
                   textOverflow: "ellipsis",
                 }}
               >
-                {email.type === "sent" ? 
+                {email.type === "sent" ? (
                   <div
                     dangerouslySetInnerHTML={{ __html: email.description }}
                   />
-                  :
-                email.description
-                }
+                ) : (
+                  email.description
+                )}
               </Typography>
             </Box>
             <Typography
