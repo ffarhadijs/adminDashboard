@@ -6,6 +6,7 @@ import {
   TextField,
   Button,
   Stack,
+  IconButton,
 } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -22,7 +23,8 @@ import { getTime } from "../../utils/getTime";
 import { getDate } from "../../utils/getDate";
 import profile from "../../assets/profile.png";
 import useSendEmail from "../../hooks/useSendEmail";
-
+import DialogModal from "../dialogModal";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 const schema = yup.object().shape({
   email: yup.string().required().email(),
 });
@@ -32,6 +34,7 @@ const Compose = () => {
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
 
+  const [openDialog, setOpenDialog] = useState(false);
   const [value, setValue] = useState("");
   const [email, setEmail] = useState({
     id: Math.floor(Math.random() * 1000),
@@ -49,7 +52,9 @@ const Compose = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
+    reset
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -57,11 +62,19 @@ const Compose = () => {
   const { mutateAsync } = useSendEmail();
 
   const onSubmit = (data) => {
-    mutateAsync({ ...email, from: data.email, title: data.subject });
+    try {
+      mutateAsync({ ...email, from: data.email, title: data.subject, description:value });
+      setOpenDialog(true)
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-
   const discardHandler = () => {
     navigate(-1);
+  };
+
+  const contentChangeHandler = (value) => {
+    setValue(value);
   };
 
   const Input = styled(TextField)({
@@ -83,13 +96,11 @@ const Compose = () => {
     },
   });
 
-  const contentChangeHandler = (value) => {
-    setValue(value);
-    setEmail({ ...email, description: value });
-  };
-
   return (
     <Box sx={{ width: "100%", padding: "40px" }}>
+      <IconButton onClick={()=>{navigate(-1);}}>
+      <KeyboardBackspaceIcon/>
+      </IconButton>
       <Stack
         flexDirection="column"
         alignItems={"start"}
@@ -162,6 +173,13 @@ const Compose = () => {
           </Button>
         </Stack>
       </Stack>
+      <DialogModal
+        type="sendEmail"
+        title="confirmation message"
+        content={`your email sent to ${getValues().email}`}
+        open={openDialog}
+        setOpen={setOpenDialog}
+      />
     </Box>
   );
 };
