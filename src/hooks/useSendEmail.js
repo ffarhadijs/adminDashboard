@@ -9,7 +9,7 @@ const useSendEmail = () => {
   const queryClient = useQueryClient();
   return useMutation(getEmail, {
     onSuccess: () => {
-      queryClient.invalidateQueries("getEmail");
+      queryClient.invalidateQueries("getEmails");
     },
   });
 };
