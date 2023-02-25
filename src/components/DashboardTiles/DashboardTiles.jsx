@@ -1,7 +1,7 @@
 import { Email, Group, ManageAccounts } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import Charts from "../charts";
+import Charts from "../Charts/Charts";
 import DashboardInfoTile from "../dashboardInfoTile";
 
 export default function DashboardTiles() {
