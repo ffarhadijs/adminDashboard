@@ -3,7 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { useState } from "react";
 import { useEffect } from "react";
 import validate from "./validate";
-import TextFieldInputs from "./textFieldInputs";
+import TextFieldInputs from "./TextFieldInputs/TextFieldInputs";
 import SelectInputs from "./SelectInpus/SelectInputs";
 import Avatar from "./Avatar/Avatar";
 import { useLocalValue } from "../../hooks/useLocalValue";
