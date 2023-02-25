@@ -1,7 +1,5 @@
-import { Box } from "@mui/material";
-import Compose from "../components/compose/Compose";
-import InboxLayout from "../components/inboxLayout";
-import InboxSections from "../components/inboxSections";
+import Compose from "../components/Compose/Compose";
+import InboxLayout from "../components/InboxLayout/InboxLayout";
 
 export default function ComposeEmail() {
   return (

@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import InboxSideBar from "../components/inboxSideBar";
+import InboxSideBar from "../components/InboxSideBar/InboxSideBar";
 
 const Inbox = () => {
   const navigate=useNavigate()

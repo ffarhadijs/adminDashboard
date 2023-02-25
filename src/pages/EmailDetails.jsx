@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import EmailContent from "../components/emailContent";
-import InboxLayout from "../components/inboxLayout";
-import { Loading } from "../components/loading";
+import EmailContent from "../components/EmailContent/EmailContent";
+import InboxLayout from "../components/InboxLayout/InboxLayout";
+import { Loading } from "../components/Loading/Loading";
 import { useFetchEmail } from "../hooks/useFetchEmail";
 
 export const EmailDetails = () => {

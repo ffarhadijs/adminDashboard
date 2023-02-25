@@ -12,9 +12,9 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { tokens } from "../../theme";
-import TabPanel from "../tabPanel";
-import Friends from "./friends";
-import ProfileData from "./profileData";
+import TabPanel from "../TabPanel/TabPanel";
+import Friends from "./Friends/Friends";
+import ProfileData from "./ProfileData/ProfileData";
 import Grid from "@mui/material/Unstable_Grid2";
 import { users } from "../../data/data";
 

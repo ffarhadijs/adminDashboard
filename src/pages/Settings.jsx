@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import UpdateForm from "../components/updateForm";
+import UpdateForm from "../components/UpdateForm/UpdateForm";
 
 export default function Settings() {
   return (

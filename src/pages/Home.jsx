@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import DashboardTiles from "../components/dashboardTiles";
+import DashboardTiles from "../components/DashboardTiles/DashboardTiles";
 
 export default function Home() {
   return (

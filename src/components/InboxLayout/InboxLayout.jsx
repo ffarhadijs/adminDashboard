@@ -1,5 +1,5 @@
-import { Box, Stack } from "@mui/material";
-import InboxSideBar from "../inboxSideBar";
+import { Stack } from "@mui/material";
+import InboxSideBar from "../InboxSideBar/InboxSideBar";
 
 export default function InboxLayout({ children }) {
   return (

@@ -1,8 +1,6 @@
-import { Email } from "@mui/icons-material"
-import { Icon, Paper, Typography, useTheme } from "@mui/material"
+import { Paper, Typography, useTheme } from "@mui/material"
 import { Box } from "@mui/system"
 import { tokens } from "../../theme"
-import Avatar from "../updateForm/avatar"
 
 const DashboardInfoTile=({avatar,number,title,subTitle, backgroundColor})=>{
 

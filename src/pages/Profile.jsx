@@ -1,7 +1,7 @@
 import { Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import ProfileHeader from "../components/profileHeader"
-import ProfileBody from "../components/profileBody";
+import ProfileHeader from "../components/ProfileHeader/ProfileHeader"
+import ProfileBody from "../components/ProfileBody/ProfileBody";
 
 export default function Profile() {
   const theme = useTheme();

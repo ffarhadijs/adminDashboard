@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-import MenuItems from "./menuItems";
+import MenuItems from "./MenuItems/MenuItems";
 import logo from "../../assets/logo.png";
 const SideBar = ({ setOpenDrawer, openDrawer }) => {
   return (

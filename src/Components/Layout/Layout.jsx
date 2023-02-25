@@ -1,8 +1,8 @@
 import { Box, useTheme } from "@mui/material";
 import React from "react";
 import { tokens } from "../../theme";
-import SideBar from "../sideBar";
-import TopBar from "../topBar";
+import SideBar from "../SideBar/SideBar";
+import TopBar from "../TopBar/TopBar";
 
 const Layout = ({ children }) => {
   const theme = useTheme();

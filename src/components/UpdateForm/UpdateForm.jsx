@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import validate from "./validate";
 import TextFieldInputs from "./textFieldInputs";
-import SelectInputs from "./selectInpus";
-import Avatar from "./avatar";
+import SelectInputs from "./SelectInpus/SelectInputs";
+import Avatar from "./Avatar/Avatar";
 import { useLocalValue } from "../../hooks/useLocalValue";
 
 export default function UpdateForm() {

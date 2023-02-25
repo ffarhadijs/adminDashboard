@@ -11,16 +11,14 @@ import {
   useTheme,
   Badge,
   Drawer,
-  FormControlLabel,
-  Switch,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { ColorModeContext, tokens } from "../../theme";
 import avatar from "../../assets/avatar.jpg";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
-import SideBar from "../sideBar";
-import AvatarMenu from "./avatarMenu";
+import SideBar from "../SideBar/SideBar";
+import AvatarMenu from "./AvatarMenu/AvatarMenu";
 import { useContext } from "react";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";

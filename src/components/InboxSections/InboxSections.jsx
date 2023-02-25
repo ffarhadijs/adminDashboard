@@ -2,8 +2,8 @@ import { Stack } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
 import { useFetchEmails } from "../../hooks/useFetchEmails";
-import EmailsList from "../emailsList";
-import { Loading } from "../loading";
+import EmailsList from "../EmailsList/EmailsList";
+import { Loading } from "../Loading/Loading";
 
 export default function InboxSections({ type, label }) {
   const { data, status, error } = useQuery("getEmails", useFetchEmails);

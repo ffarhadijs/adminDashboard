@@ -23,8 +23,9 @@ import { getTime } from "../../utils/getTime";
 import { getDate } from "../../utils/getDate";
 import profile from "../../assets/profile.png";
 import useSendEmail from "../../hooks/useSendEmail";
-import DialogModal from "../dialogModal";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import DialogModal from "../DialogModal/DialogModal";
+
 const schema = yup.object().shape({
   email: yup.string().required().email(),
 });

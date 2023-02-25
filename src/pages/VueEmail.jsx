@@ -1,5 +1,5 @@
-import InboxLayout from "../components/inboxLayout";
-import InboxSections from "../components/inboxSections";
+import InboxLayout from "../components/InboxLayout/InboxLayout";
+import InboxSections from "../components/InboxSections/InboxSections";
 
 export default function VueEmail() {
   return (

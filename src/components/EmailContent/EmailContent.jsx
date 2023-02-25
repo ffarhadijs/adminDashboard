@@ -19,8 +19,8 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../../theme";
 import { useState } from "react";
-import DialogModal from "../dialogModal";
 import useUpdateEmail from "../../hooks/useUpdateEmail";
+import DialogModal from "../DialogModal/DialogModal";
 
 const TextArea = styled(InputBase)({
   "& .MuiInputBase-input": {
