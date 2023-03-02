@@ -17,6 +17,7 @@ import VueEmail from "./pages/VueEmail";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { EmailDetails } from "./pages/EmailDetails";
 import ComposeEmail from "./pages/ComposeEmail";
+import Todos from "./pages/Todos";
 
 function App() {
   const queryClient=new QueryClient()
@@ -42,6 +43,7 @@ function App() {
               <Route path="/apps/emailbox/vue" element={<VueEmail />} />
               <Route path="/apps/emailbox/:category/:id" element={<EmailDetails />} />
               <Route path="/apps/emailbox/compose" element={<ComposeEmail />} />
+              <Route path="/apps/todo" element={<Todos/>}/>
             </Routes>
           </Layout>
         </ThemeProvider>
