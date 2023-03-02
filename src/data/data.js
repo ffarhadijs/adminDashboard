@@ -31,7 +31,7 @@ export const menuItems = [
     subItems: [
       { title: "Inbox", id: "11", slug: "/apps/emailbox" },
       { title: "Contacts", id: "12", slug: "/apps/contacts" },
-      { title: "Calendar", id: "13", slug: "/apps/calendar" },
+      { title: "Todo", id: "13", slug: "/apps/todo" },
       { title: "Note", id: "14", slug: "/apps/note" },
     ],
   },
