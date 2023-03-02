@@ -97,6 +97,23 @@
       "type": "sent"
     }
   ],
+  "todos": [
+    {
+      "id": 1362,
+      "title": "123",
+      "isCompleted": false
+    },
+    {
+      "id": 5469,
+      "title": "qwe",
+      "isCompleted": false
+    },
+    {
+      "id": 2466,
+      "title": "123123",
+      "isCompleted": false
+    }
+  ],
   "countries": [
     {
       "country": "Afghanistan",
