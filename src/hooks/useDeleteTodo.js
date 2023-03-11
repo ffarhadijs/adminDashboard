@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 
-const deleteTodo = (todoId) => {
-    todoId.forEach(id => {
-       return axios.delete(`http://localhost:3001/todos/${id}`);
-    });
+const deleteTodo = (id) => {
+        axios.delete(`http://localhost:3001/todos/${id}`);
 };
 
 export const useDeleteTodo = () => {
