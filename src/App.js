@@ -18,36 +18,51 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { EmailDetails } from "./pages/EmailDetails";
 import ComposeEmail from "./pages/ComposeEmail";
 import Todos from "./pages/Todos";
+import Notes from "./pages/Notes";
+import NoteDetail from "./pages/NoteDetail";
 
 function App() {
-  const queryClient=new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { refetchOnWindowFocus: false } },
+  });
   const [theme, colorMode] = useMode();
 
   return (
     <Box className="app">
       <QueryClientProvider client={queryClient}>
-      <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Layout>
-            <Routes>
-              <Route path="/pages/profile" element={<Profile />} />
-              <Route path="/pages/settings" element={<Settings />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/apps/emailbox" element={<Inbox />} />
-              <Route path="/apps/emailbox/inbox" element={<InboxEmails />} />
-              <Route path="/apps/emailbox/sent" element={<SentEmails />} />
-              <Route path="/apps/emailbox/trash" element={<TrashEmails />} />
-              <Route path="/apps/emailbox/react" element={<ReactEmail />} />
-              <Route path="/apps/emailbox/angular" element={<AngularEmail />} />
-              <Route path="/apps/emailbox/vue" element={<VueEmail />} />
-              <Route path="/apps/emailbox/:category/:id" element={<EmailDetails />} />
-              <Route path="/apps/emailbox/compose" element={<ComposeEmail />} />
-              <Route path="/apps/todo" element={<Todos/>}/>
-            </Routes>
-          </Layout>
-        </ThemeProvider>
-      </ColorModeContext.Provider>
+        <ColorModeContext.Provider value={colorMode}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Layout>
+              <Routes>
+                <Route path="/pages/profile" element={<Profile />} />
+                <Route path="/pages/settings" element={<Settings />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/apps/emailbox" element={<Inbox />} />
+                <Route path="/apps/emailbox/inbox" element={<InboxEmails />} />
+                <Route path="/apps/emailbox/sent" element={<SentEmails />} />
+                <Route path="/apps/emailbox/trash" element={<TrashEmails />} />
+                <Route path="/apps/emailbox/react" element={<ReactEmail />} />
+                <Route
+                  path="/apps/emailbox/angular"
+                  element={<AngularEmail />}
+                />
+                <Route path="/apps/emailbox/vue" element={<VueEmail />} />
+                <Route
+                  path="/apps/emailbox/:category/:id"
+                  element={<EmailDetails />}
+                />
+                <Route
+                  path="/apps/emailbox/compose"
+                  element={<ComposeEmail />}
+                />
+                <Route path="/apps/todo" element={<Todos />} />
+                <Route path="/apps/note" element={<Notes />} />
+                <Route path="/apps/note/:id" element={<NoteDetail />} />
+              </Routes>
+            </Layout>
+          </ThemeProvider>
+        </ColorModeContext.Provider>
       </QueryClientProvider>
     </Box>
   );
