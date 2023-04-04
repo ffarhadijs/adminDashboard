@@ -36,24 +36,27 @@ export default function NoteDetail() {
   const { mutateAsync: deleteNote, isLoading: loadingDelete } = useDeleteNote();
   const { mutateAsync: updateNote, isLoading: loadingUpdate } = useUpdateNote();
   const { register, handleSubmit } = useForm();
-  const [color,setColor]=useState("")
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const openMenuHandler = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const chooseColorHandler =async (color) => {
-    setAnchorEl(null);
-    setColor(color)
+  const chooseColorHandler = async (color) => {
+    try {
+      const editedNote = { ...noteData.data };
+      editedNote.color = color;
+      await updateNote(editedNote);
+      !loadingUpdate && setAnchorEl(null);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-
 
   const onSubmit = async (data) => {
     try {
       const editedNote = { ...noteData.data };
       editedNote.name = data.note;
       editedNote.date = new Date().toLocaleString();
-      editedNote.color = color
       await updateNote(editedNote);
       !loadingUpdate && navigate(-1);
     } catch (error) {
@@ -103,7 +106,7 @@ export default function NoteDetail() {
             <ColorLensIcon />
           </IconButton>
         </Tooltip>
-        <Menu anchorEl={anchorEl} open={open} onClose={()=>setAnchorEl(null)}>
+        <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
           {colors.map((item) => (
             <MenuItem
               key={item.id}
@@ -118,7 +121,7 @@ export default function NoteDetail() {
           ))}
         </Menu>
         <Typography variant="body2" fontSize={"13px"}>
-          {noteData.data?.date}
+          created on: {noteData.data?.date}
         </Typography>
       </Box>
       <Divider orientation="horizontal" sx={{ marginY: "10px" }} />
