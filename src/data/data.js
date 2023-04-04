@@ -30,7 +30,6 @@ export const menuItems = [
     icon: Apps,
     subItems: [
       { title: "Inbox", id: "11", slug: "/apps/emailbox" },
-      { title: "Contacts", id: "12", slug: "/apps/contacts" },
       { title: "Todo", id: "13", slug: "/apps/todo" },
       { title: "Note", id: "14", slug: "/apps/note" },
     ],
@@ -41,11 +40,9 @@ export const menuItems = [
     icon: GridView,
     subItems: [
       { title: "Header", id: "21", slug: "/layouts/header" },
-      { title: "Aside", id: "22", slug: "/layouts/aside" },
       { title: "Footer", id: "23", slug: "/layouts/footer" },
     ],
   },
-  { title: "UI Kits", slug: "/kits", id: "3", icon: BusinessCenter },
   {
     title: "Pages",
     id: "4",
@@ -53,7 +50,6 @@ export const menuItems = [
     subItems: [
       { title: "Profile", id: "41", slug: "/pages/profile" },
       { title: "Settings", id: "42", slug: "/pages/settings" },
-      { title: "Search", id: "43", slug: "/pages/search" },
       { title: "FAQ", id: "44", slug: "/pages/faq" },
     ],
   },
@@ -67,7 +63,6 @@ export const menuItems = [
       { title: "Pie", id: "53", slug: "/charts/pie" },
     ],
   },
-  { title: "Document", slug: "/document", id: "6", icon: Article },
 ];
 
 export const avatarMenuItems = [
