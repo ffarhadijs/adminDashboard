@@ -3,7 +3,9 @@ import { useRef } from "react";
 import { useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 
-export default function Avatar({ formValues, setFormValues }) {
+export default function Avatar() {
+  const [avatar, setAvatar] = useState();
+
   const editor = useRef(null);
   const [options, setOptions] = useState({ scale: 1, rotate: 0 });
 
@@ -11,7 +13,7 @@ export default function Avatar({ formValues, setFormValues }) {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setFormValues({ ...formValues, avatar: e.target.result });
+        setAvatar(e.target.result);
       };
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -21,9 +23,9 @@ export default function Avatar({ formValues, setFormValues }) {
     <Box>
       <AvatarEditor
         image={
-          (formValues.avatar && formValues.avatar)||
-          (localStorage.getItem("profileData") &&
-            JSON.parse(localStorage.getItem("profileData")).avatar) 
+          (avatar && avatar) ||
+          (localStorage.getItem("profileAvatar") &&
+            JSON.parse(localStorage.getItem("profileAvatar")))
         }
         width={200}
         height={200}
@@ -89,7 +91,7 @@ export default function Avatar({ formValues, setFormValues }) {
             onChange={uploadHandler}
           />
         </Button>
-        
+
         <Button
           variant="contained"
           sx={{
@@ -103,14 +105,14 @@ export default function Avatar({ formValues, setFormValues }) {
               const canvasScaled = editor.current
                 .getImageScaledToCanvas()
                 .toDataURL();
-              setFormValues({ ...formValues, avatar: canvasScaled });
+              setAvatar(canvasScaled);
               setOptions({ rotate: 0, scale: 1 });
+              localStorage.setItem("profileAvatar", JSON.stringify(avatar));
             }
           }}
         >
           Apply changes
         </Button>
-        
       </Stack>
     </Box>
   );
