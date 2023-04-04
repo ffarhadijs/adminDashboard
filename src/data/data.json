@@ -97,36 +97,48 @@
       "type": "sent"
     }
   ],
-  "todos": [
+  "profile": {
+    "bio": "teacher and developer",
+    "cellPhone": "09144273310",
+    "country": "Iran",
+    "email": "rb0214192@gmail.com",
+    "firstName": "farhad",
+    "job": "teacher",
+    "lastName": "farhadi",
+    "state": "Azarbayjan-e Gharbi",
+    "status": "married"
+  },
+  "todos": [],
+  "notes": [
     {
-      "id": 9092,
-      "title": "qw1234",
-      "isCompleted": false
+      "name": "asdasd123asd1",
+      "id": 5640,
+      "date": "3/19/2023, 7:04:52 PM",
+      "color": ""
     },
     {
-      "id": 9105,
-      "title": "qweqwe1",
-      "isCompleted": false
+      "name": "123a1b2345sadsd123",
+      "id": 5848,
+      "date": "3/19/2023, 7:03:20 PM",
+      "color": "#FCE315"
     },
     {
-      "id": 6054,
-      "title": "qeqwe",
-      "isCompleted": false
+      "name": "asd1sdaw11123asd111asd1111fc",
+      "id": 6623,
+      "date": "3/19/2023, 7:19:19 PM",
+      "color": "#FC7015"
     },
     {
-      "id": 8808,
-      "title": "qweqwe",
-      "isCompleted": false
+      "name": "as",
+      "id": 8775,
+      "date": "3/19/2023, 7:23:53 PM",
+      "color": "#101624"
     },
     {
-      "id": 1942,
-      "title": "123123",
-      "isCompleted": false
-    },
-    {
-      "id": 8656,
-      "title": "s",
-      "isCompleted": false
+      "name": "asd",
+      "id": 541,
+      "date": "3/19/2023, 8:11:49 PM",
+      "color": "#101624"
     }
   ],
   "countries": [
