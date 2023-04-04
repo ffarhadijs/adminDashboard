@@ -1,10 +1,14 @@
 import axios from "axios";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 const updateNote = (note) => {
   axios.put(`http://localhost:3001/notes/${note.id}`, note);
 };
 
 export const useUpdateNote = () => {
-  return useMutation(updateNote);
+  const queryClient = useQueryClient();
+
+  return useMutation(updateNote, {
+    onSuccess: () => queryClient.invalidateQueries("getNote"),
+  });
 };
