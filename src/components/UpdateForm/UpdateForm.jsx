@@ -1,125 +1,100 @@
-import { Button } from "@mui/material";
+import {
+  Button,
+  InputBase,
+  InputLabel,
+  MenuItem,
+  Select,
+  styled,
+  TextField,
+  useTheme,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { useState } from "react";
-import { useEffect } from "react";
-import validate from "./validate";
-import TextFieldInputs from "./TextFieldInputs/TextFieldInputs";
-import SelectInputs from "./SelectInpus/SelectInputs";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { tokens } from "../../theme";
+import { useFetchCountries } from "../../hooks/useFetchCountries";
 import Avatar from "./Avatar/Avatar";
-import { useLocalValue } from "../../hooks/useLocalValue";
+import { useState } from "react";
+import { useFetchProfile } from "../../hooks/useFetchProfile";
+import axios from "axios";
+import { useUpdateProfile } from "../../hooks/useUpdateProfile";
+
+const schema = yup.object().shape({
+  firstName: yup.string().required("First name is required"),
+  lastName: yup.string().required("Last name is required"),
+  email: yup.string().required("Email is required").email(),
+  job: yup.string().required("Job is required"),
+  cellPhone: yup
+    .string()
+    .required("Cell phone is required")
+    .matches(
+      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+      "Phone number is not correct"
+    ),
+  status: yup.string().required("status is required"),
+  bio: yup.string().required("Bio is required"),
+});
 
 export default function UpdateForm() {
-  const [error, setError] = useState({});
-  const [touched, setTouched] = useState({});
-  const [formValues, setFormValues] = useState({
-    firstName: useLocalValue("firstName"),
-    lastName: useLocalValue("lastName"),
-    email: useLocalValue("email"),
-    job: useLocalValue("job"),
-    cellPhone: useLocalValue("cellPhone"),
-    bio: useLocalValue("bio"),
-    country: useLocalValue("country"),
-    state: useLocalValue("state"),
-    status: useLocalValue("status"),
-    avatar: useLocalValue("avatar"),
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  const { data: countries, isLoading: countryLoading } = useFetchCountries();
+  const { mutate, isLoading } = useUpdateProfile();
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, defaultValues },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: async () => {
+      const resp = await axios.get("http://localhost:3001/profile");
+      return resp.data;
+    },
   });
 
-  const changeHandler = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  const country = watch("country", false);
+  const state = watch("state", false);
+
+  const submitHandler = (data) => {
+    mutate(data);
   };
-
-  const focusHandler = (e) => {
-    setTouched({ ...touched, [e.target.name]: true });
-  };
-  const submitHandler = (e) => {
-    e.preventDefault();
-    window.localStorage.setItem("profileData", JSON.stringify(formValues));
-  };
-
-  useEffect(() => {
-    setError(validate(formValues));
-  }, [formValues]);
-
-  const textFieldInputs = [
-    {
-      id: 1,
-      type: "text",
-      name: "firstName",
-      label: "First name",
-      error: error.firstName,
-      touch: touched.firstName,
-      value: formValues.firstName,
+  const TextFieldStyled = styled(TextField)({
+    "& .MuiInputBase-input": {
+      padding: "12px",
+      transition: "all 0.5s ease",
+      backgroundColor: colors.primary[500],
+      "&:focus": {
+        backgroundColor: colors.primary[400],
+      },
+      "&:hover": {
+        backgroundColor: colors.primary[400],
+      },
     },
-    {
-      id: 2,
-      type: "text",
-      name: "lastName",
-      label: "Last name",
-      error: error.lastName,
-      touch: touched.lastName,
-      value: formValues.lastName,
+    "& .MuiOutlinedInput-root": {
+      padding: 0,
+      "&:hover fieldset": {
+        border: `1px solid ${colors.grey[100]}`,
+        transition: "all 0.5s ease",
+      },
+      "&.Mui-focused fieldset": {
+        border: `1px solid ${colors.grey[100]}`,
+      },
     },
-    {
-      id: 3,
-      type: "text",
-      name: "email",
-      label: "Email",
-      error: error.email,
-      touch: touched.email,
-      value: formValues.email,
+  });
+  const SelectInput = styled(InputBase)({
+    "& .MuiInputBase-input": {
+      padding: "12px",
+      transition: "all 0.5s ease",
+      backgroundColor: colors.primary[500],
+      "&:hover": {
+        backgroundColor: colors.primary[400],
+        border: `1px solid ${colors.grey[100]}`,
+      },
     },
-    {
-      id: 4,
-      type: "text",
-      name: "job",
-      label: "Job",
-      error: error.job,
-      touch: touched.job,
-      value: formValues.job,
-    },
-    {
-      id: 5,
-      type: "text",
-      name: "cellPhone",
-      label: "Cell phone",
-      error: error.cellPhone,
-      touch: touched.cellPhone,
-      value: formValues.cellPhone,
-    },
-    {
-      id: 6,
-      type: "text",
-      name: "status",
-      label: "Status",
-      error: error.status,
-      touch: touched.status,
-      value: formValues.status,
-    },
-    {
-      id: 7,
-      type: "text",
-      name: "bio",
-      label: "Bio",
-      error: error.bio,
-      touch: touched.bio,
-      value: formValues.bio,
-    },
-  ];
-
-  const selectInputs = [
-    {
-      id: 1,
-      name: "country",
-      label: "Country",
-      value: formValues.country,
-    },
-    {
-      id: 2,
-      name: "state",
-      label: "State",
-      value: formValues.state,
-    },
-  ];
+  });
 
   return (
     <Grid
@@ -127,25 +102,114 @@ export default function UpdateForm() {
       component="form"
       p={4}
       sx={{ flexDirection: { md: "row", xs: "column-reverse" } }}
-      onSubmit={submitHandler}
+      onSubmit={handleSubmit(submitHandler)}
     >
       <Grid container spacing={4} xs={12} md={7}>
-        {textFieldInputs.map((input) => (
-          <TextFieldInputs
-            key={input.id}
-            input={input}
-            changeHandler={changeHandler}
-            focusHandler={focusHandler}
+        <Grid item xs={12} sm={6} height={"100px"}>
+          <InputLabel htmlFor="firstName">First name</InputLabel>
+          <TextFieldStyled
+            {...register("firstName")}
+            error={!!errors?.firstName}
+            helperText={errors?.firstName?.message}
+            fullWidth
           />
-        ))}
-        {selectInputs.map((input) => (
-          <SelectInputs
-            key={input.id}
-            input={input}
-            changeHandler={changeHandler}
-            formValues={formValues}
+        </Grid>
+        <Grid item xs={12} sm={6} height={"100px"}>
+          <InputLabel htmlFor="lastName">Last name</InputLabel>
+          <TextFieldStyled
+            {...register("lastName")}
+            error={!!errors?.lastName}
+            helperText={errors?.lastName?.message}
+            fullWidth
           />
-        ))}
+        </Grid>{" "}
+        <Grid item xs={12} sm={6} height={"100px"}>
+          <InputLabel htmlFor="email">Email</InputLabel>
+          <TextFieldStyled
+            {...register("email")}
+            error={!!errors?.email}
+            helperText={errors?.email?.message}
+            fullWidth
+          />
+        </Grid>{" "}
+        <Grid item xs={12} sm={6} height={"100px"}>
+          <InputLabel htmlFor="job">Job</InputLabel>
+          <TextFieldStyled
+            {...register("job")}
+            error={!!errors?.job}
+            helperText={errors?.job?.message}
+            fullWidth
+          />
+        </Grid>{" "}
+        <Grid item xs={12} sm={6} height={"100px"}>
+          <InputLabel htmlFor="cellPhone">Cell phone</InputLabel>
+          <TextFieldStyled
+            {...register("cellPhone")}
+            error={!!errors?.cellPhone}
+            helperText={errors?.cellPhone?.message}
+            fullWidth
+          />
+        </Grid>{" "}
+        <Grid item xs={12} sm={6} height={"100px"}>
+          <InputLabel htmlFor="status">Status</InputLabel>
+          <TextFieldStyled
+            {...register("status")}
+            error={!!errors?.status}
+            helperText={errors?.status?.message}
+            fullWidth
+          />
+        </Grid>{" "}
+        <Grid item xs={12} height={"170px"}>
+          <InputLabel htmlFor="bio">Bio</InputLabel>
+          <TextFieldStyled
+            {...register("bio")}
+            error={!!errors?.bio}
+            helperText={errors?.bio?.message}
+            fullWidth
+            multiline
+            rows={4}
+          />
+        </Grid>
+        <Grid xs={6} height={"100px"}>
+          <InputLabel htmlFor={"country"}>Country</InputLabel>
+          <Select
+            input={<SelectInput />}
+            {...register("country")}
+            value={country}
+            sx={{
+              border: `1px solid rgb(110,110,110)`,
+            }}
+            fullWidth
+            disabled={countryLoading}
+          >
+            {countries?.map((item) => (
+              <MenuItem value={item.country} key={item.country}>
+                {item.country}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid xs={6} height={"100px"}>
+          <InputLabel htmlFor={"state"}>State</InputLabel>
+          <Select
+            input={<SelectInput />}
+            {...register("state")}
+            value={state}
+            sx={{
+              border: `1px solid rgb(110,110,110)`,
+            }}
+            fullWidth
+            defaultValue=""
+          >
+            {countries
+              ?.find((item) => item.country === country)
+              ?.states?.map((state) => (
+                <MenuItem value={state} key={state}>
+                  {state}
+                </MenuItem>
+              ))}
+          </Select>
+        </Grid>
         <Grid
           xs={12}
           container
@@ -163,17 +227,14 @@ export default function UpdateForm() {
                 backgroundColor: "darkgreen",
               },
             }}
+            disabled={isLoading}
           >
             Save Form
           </Button>
         </Grid>
       </Grid>
       <Grid container md={5} xs={12} justifyContent="center">
-        <Avatar
-          formValues={formValues}
-          setFormValues={setFormValues}
-          changeHandler={changeHandler}
-        />
+        <Avatar />
       </Grid>
     </Grid>
   );
