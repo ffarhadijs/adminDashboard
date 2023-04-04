@@ -20,6 +20,7 @@ import ComposeEmail from "./pages/ComposeEmail";
 import Todos from "./pages/Todos";
 import Notes from "./pages/Notes";
 import NoteDetail from "./pages/NoteDetail";
+import Faq from "./pages/Faq";
 
 function App() {
   const queryClient = new QueryClient({
@@ -37,6 +38,7 @@ function App() {
               <Routes>
                 <Route path="/pages/profile" element={<Profile />} />
                 <Route path="/pages/settings" element={<Settings />} />
+                <Route path="/pages/faq" element={<Faq />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/apps/emailbox" element={<Inbox />} />
                 <Route path="/apps/emailbox/inbox" element={<InboxEmails />} />
