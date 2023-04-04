@@ -15,8 +15,6 @@ import * as yup from "yup";
 import { tokens } from "../../theme";
 import { useFetchCountries } from "../../hooks/useFetchCountries";
 import Avatar from "./Avatar/Avatar";
-import { useState } from "react";
-import { useFetchProfile } from "../../hooks/useFetchProfile";
 import axios from "axios";
 import { useUpdateProfile } from "../../hooks/useUpdateProfile";
 
