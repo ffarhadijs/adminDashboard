@@ -6,7 +6,6 @@ import {
   styled,
   useTheme,
 } from "@mui/material";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DoneIcon from "@mui/icons-material/Done";
 import { tokens } from "../../theme";
@@ -20,8 +19,9 @@ export default function NoteInput() {
   const { mutateAsync: sendNote } = useSendNote();
   const onSubmit = async (data) => {
     const id = Math.floor(Math.random() * 10000);
-    const date= new Date().toLocaleString()
-    const note = { ...data, id, date };
+    const date = new Date().toLocaleString();
+    const color = colors.primary[600];
+    const note = { ...data, id, date, color };
     try {
       await sendNote(note);
     } catch (error) {
