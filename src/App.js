@@ -21,6 +21,8 @@ import Todos from "./pages/Todos";
 import Notes from "./pages/Notes";
 import NoteDetail from "./pages/NoteDetail";
 import Faq from "./pages/Faq";
+import Header from "./pages/Header";
+import Footer from "./pages/Footer";
 
 function App() {
   const queryClient = new QueryClient({
@@ -61,6 +63,8 @@ function App() {
                 <Route path="/apps/todo" element={<Todos />} />
                 <Route path="/apps/note" element={<Notes />} />
                 <Route path="/apps/note/:id" element={<NoteDetail />} />
+                <Route path="layouts/header" element={<Header />} />
+                <Route path="layouts/footer" element={<Footer />} />
               </Routes>
             </Layout>
           </ThemeProvider>
