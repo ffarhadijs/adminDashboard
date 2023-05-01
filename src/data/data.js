@@ -127,38 +127,104 @@ export const users = [
   },
 ];
 
-export const emailsData = [
-  { id: 3, year: 2019, emails: 180 },
-  { id: 4, year: 2020, emails: 97 },
-  { id: 5, year: 2021, emails: 121 },
-  { id: 6, year: 2022, emails: 165 },
-  { id: 7, year: 2023, emails: 125 },
+export const emailsData = {
+  fiveYear: [
+    { id: 3, date: 2019, emails: 150 },
+    { id: 4, date: 2020, emails: 250 },
+    { id: 5, date: 2021, emails: 205 },
+    { id: 6, date: 2022, emails: 120 },
+    { id: 7, date: 2023, emails: 190 },
+  ],
+  oneYear: [
+    { id: 1, date: "January", emails: 100 },
+    { id: 2, date: "February", emails: 82 },
+    { id: 3, date: "March", emails: 55 },
+    { id: 4, date: "April", emails: 85 },
+    { id: 5, date: "May", emails: 40 },
+    { id: 6, date: "June", emails: 95 },
+    { id: 7, date: "July", emails: 99 },
+    { id: 8, date: "August", emails: 75 },
+    { id: 9, date: "September", emails: 75 },
+    { id: 10, date: "October", emails: 85 },
+    { id: 11, date: "November", emails: 83 },
+    { id: 12, date: "December", emails: 99 },
+  ],
+  oneMonth: [
+    { id: 1, date: "1st week", emails: 28 },
+    { id: 2, date: "2nd week", emails: 52 },
+    { id: 3, date: "3rd week", emails: 46 },
+    { id: 4, date: "4th week", emails: 32 },
+  ],
+};
+
+export const projectsData = {
+  fiveYear: [
+    { id: 3, date: 2019, projects: 37 },
+    { id: 4, date: 2020, projects: 52 },
+    { id: 5, date: 2021, projects: 15 },
+    { id: 6, date: 2022, projects: 45 },
+    { id: 7, date: 2023, projects: 40 },
+  ],
+  oneYear: [
+    { id: 1, date: "January", projects: 37 },
+    { id: 2, date: "February", projects: 52 },
+    { id: 3, date: "March", projects: 15 },
+    { id: 4, date: "April", projects: 45 },
+    { id: 5, date: "May", projects: 40 },
+    { id: 6, date: "June", projects: 25 },
+    { id: 7, date: "July", projects: 19 },
+    { id: 8, date: "August", projects: 35 },
+    { id: 9, date: "September", projects: 55 },
+    { id: 10, date: "October", projects: 50 },
+    { id: 11, date: "November", projects: 13 },
+    { id: 12, date: "December", projects: 29 },
+  ],
+  oneMonth: [
+    { id: 1, date: "1st week", projects: 8 },
+    { id: 2, date: "2nd week", projects: 20 },
+    { id: 3, date: "3rd week", projects: 16 },
+    { id: 4, date: "4th week", projects: 12 },
+  ],
+};
+
+export const usersData = {
+  fiveYear: [
+    { id: 3, date: 2019, users: 500 },
+    { id: 4, date: 2020, users: 450 },
+    { id: 5, date: 2021, users: 395 },
+    { id: 6, date: 2022, users: 495 },
+    { id: 7, date: 2023, users: 585 },
+  ],
+  oneYear: [
+    { id: 1, date: "January", users: 80 },
+    { id: 2, date: "February", users: 20 },
+    { id: 3, date: "March", users: 38 },
+    { id: 4, date: "April", users: 55 },
+    { id: 5, date: "May", users: 40 },
+    { id: 6, date: "June", users: 52 },
+    { id: 7, date: "July", users: 32 },
+    { id: 8, date: "August", users: 75 },
+    { id: 9, date: "September", users: 75 },
+    { id: 10, date: "October", users: 29 },
+    { id: 11, date: "November", users: 85 },
+    { id: 12, date: "December", users: 55 },
+  ],
+  oneMonth: [
+    { id: 1, date: "1st week", users: 45 },
+    { id: 2, date: "2nd week", users: 52 },
+    { id: 3, date: "3rd week", users: 57 },
+    { id: 4, date: "4th week", users: 32 },
+  ],
+};
+
+export const inboxSideBar = [
+  { id: 1, title: "Inbox", slug: "apps/emailbox/inbox" },
+  { id: 2, title: "Sent", slug: "apps/emailbox/sent" },
+  { id: 3, title: "Trash", slug: "apps/emailbox/trash" },
 ];
 
-export const projectsData = [
-  { id: 3, year: 2019, projects: 37 },
-  { id: 4, year: 2020, projects: 52 },
-  { id: 5, year: 2021, projects: 15 },
-  { id: 6, year: 2022, projects: 45 },
-  { id: 7, year: 2023, projects: 40 },
+export const inboxLabels = [
+  { id: 1, title: "Angular", slug: "apps/emailbox/angular" },
+  { id: 2, title: "React", slug: "apps/emailbox/react" },
+  { id: 3, title: "Vue", slug: "apps/emailbox/vue" },
 ];
-
-export const usersData = [
-  { id: 3, year: 2019, users: 350 },
-  { id: 4, year: 2020, users: 559},
-  { id: 5, year: 2021, users: 421 },
-  { id: 6, year: 2022, users: 365 },
-  { id: 7, year: 2023, users: 600 },
-];
-
-export const inboxSideBar=[
-  {id:1, title:"Inbox", slug:"apps/emailbox/inbox"},
-  {id:2, title:"Sent", slug:"apps/emailbox/sent"},
-  {id:3, title:"Trash", slug:"apps/emailbox/trash"}
-]
-
-export const inboxLabels=[
-  {id:1, title:"Angular", slug:"apps/emailbox/angular"},
-  {id:2, title:"React", slug:"apps/emailbox/react"},
-  {id:3, title:"Vue", slug:"apps/emailbox/vue"}
-]
