@@ -24,13 +24,13 @@ const Charts = ({ type, title }) => {
   const barOption = {
     tooltip: {},
     xAxis: {
-      data: emailsData.map((item) => item.year),
+      data: emailsData.fiveYear.map((item) => item.date),
     },
     yAxis: {},
     series: [
       {
         name: "Emails",
-        data: emailsData.map((item) => item.emails),
+        data: emailsData.fiveYear.map((item) => item.emails),
         type: "bar",
         color: "#FFB6C1",
       },
@@ -46,7 +46,10 @@ const Charts = ({ type, title }) => {
         name: "Users",
         type: "pie",
         radius: "50%",
-        data: usersData.map((item) => ({ value: item.users, name: item.year })),
+        data: usersData.fiveYear.map((item) => ({
+          value: item.users,
+          name: item.date,
+        })),
         emphasis: {
           label: false,
           itemStyle: {
@@ -65,13 +68,13 @@ const Charts = ({ type, title }) => {
   const lineOption = {
     tooltip: {},
     xAxis: {
-      data: projectsData.map((item) => item.year),
+      data: projectsData.fiveYear.map((item) => item.date),
     },
     yAxis: {},
     series: [
       {
         name: "Projects",
-        data: projectsData.map((item) => item.projects),
+        data: projectsData.fiveYear.map((item) => item.projects),
         type: "line",
         color: "#90ee90",
       },
@@ -103,34 +106,14 @@ const Charts = ({ type, title }) => {
         padding: "15px 5px 15px 15px",
       }}
     >
-      <Stack
-        flexDirection={"row"}
-        justifyContent="space-between"
-        alignItems={"start"}
-      >
-        <Box>
-          <Typography variant="subtitle" component="div">
-            {title}
-          </Typography>
-          <Typography variant="caption" color={colors.grey[200]}>
-            Calculated in last 5 years
-          </Typography>
-        </Box>
-        <IconButton p={0} onClick={handleClick}>
-          <MoreVertIcon />
-        </IconButton>
-      </Stack>
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem selected onClick={handleClose}>
-          Last 5 year
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          This year
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-        This month
-        </MenuItem>
-      </Menu>
+      <Box>
+        <Typography variant="subtitle" component="div">
+          {title}
+        </Typography>
+        <Typography variant="caption" color={colors.grey[200]}>
+          Calculated in last 5 years
+        </Typography>
+      </Box>
       <ReactEcharts option={option(type)} />
     </Paper>
   );
