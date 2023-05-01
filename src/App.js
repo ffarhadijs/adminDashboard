@@ -23,6 +23,9 @@ import NoteDetail from "./pages/NoteDetail";
 import Faq from "./pages/Faq";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
+import LineChart from "./pages/LineChart";
+import PieChart from "./pages/PieChart";
+import BarChart from "./pages/BarChart";
 
 function App() {
   const queryClient = new QueryClient({
@@ -65,6 +68,10 @@ function App() {
                 <Route path="/apps/note/:id" element={<NoteDetail />} />
                 <Route path="layouts/header" element={<Header />} />
                 <Route path="layouts/footer" element={<Footer />} />
+                <Route path="charts/line" element={<LineChart />} />
+                <Route path="charts/pie" element={<PieChart />} />
+                <Route path="charts/bar" element={<BarChart />} />
+
               </Routes>
             </Layout>
           </ThemeProvider>
